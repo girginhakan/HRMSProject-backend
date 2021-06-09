@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
-@PrimaryKeyJoinColumn(name = "employer_id")
+//@PrimaryKeyJoinColumn(name = "employer_id")
 @EqualsAndHashCode(callSuper = true)
 public class Employer extends User {
 //	@Id

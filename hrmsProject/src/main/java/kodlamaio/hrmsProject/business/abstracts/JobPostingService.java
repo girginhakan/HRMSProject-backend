@@ -10,17 +10,14 @@ import kodlamaio.hrmsProject.entities.dtos.JobPostingWithEmployerAndJobTitleDto;
 public interface JobPostingService {
 	Result add(JobPosting jobPosting);
 
-	
-
 	Result delete(JobPosting jobPosting);
 
-	DataResult<List<JobPosting>> getAll(); 
-
-	
+	DataResult<List<JobPosting>> getAll();
 
 	DataResult<List<JobPostingWithEmployerAndJobTitleDto>> getActiveJobPostingDetails();
 
 	DataResult<List<JobPostingWithEmployerAndJobTitleDto>> getActiveJobPostingDetailsSortedByPostingDate();
 
-	DataResult<List<JobPostingWithEmployerAndJobTitleDto>> getActiveJobPostingDetailsByEmployerId(int employerId);
+	DataResult<List<JobPostingWithEmployerAndJobTitleDto>> getActiveJobPostingDetailsByEmployerId(int id);
+
 }

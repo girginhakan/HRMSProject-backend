@@ -3,7 +3,6 @@ package kodlamaio.hrmsProject.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import kodlamaio.hrmsProject.business.abstracts.JobPostingService;
@@ -23,6 +22,11 @@ public class JobPostingManager implements JobPostingService {
 		
 		this.jobPostingDao = jobPostingDao;
 	}
+//	@Override
+//	public DataResult<List<JobPosting>> getAll() {
+//		
+//		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAll());
+//	}
 
 	@Override
 	public Result add(JobPosting jobPosting) {
@@ -48,20 +52,18 @@ public class JobPostingManager implements JobPostingService {
 	@Override
 	public DataResult<List<JobPostingWithEmployerAndJobTitleDto>> getActiveJobPostingDetails() {
 		
-		return new SuccessDataResult<List<JobPostingWithEmployerAndJobTitleDto>>(this.jobPostingDao.getJobPostingWithEmployerAndJobTitleDetailsByIsActive(true), "Tüm aktif iş ilanları listelenmiştir.");
+		return new SuccessDataResult<List<JobPostingWithEmployerAndJobTitleDto>>(this.jobPostingDao.getJobPostingWithEmployerAndJobTitleDetailsByIsActive(), "Tüm aktif iş ilanları listelenmiştir.");
 	}
 
 	@Override
 	public DataResult<List<JobPostingWithEmployerAndJobTitleDto>> getActiveJobPostingDetailsSortedByPostingDate() {
-		Sort sort=Sort.by(Sort.Direction.DESC, "postingDate");
-		return new SuccessDataResult<List<JobPostingWithEmployerAndJobTitleDto>>(this.jobPostingDao.getJobPostingWithEmployerAndJobTitleDetailsByIsActive(true, sort), "Tüm aktif iş ilanları tarihe göre sıralandı.");
+		return new SuccessDataResult<List<JobPostingWithEmployerAndJobTitleDto>>(this.jobPostingDao.getJobPostingWithEmployerAndJobTitleDetailsSortedByIsActive(), "Tüm aktif iş ilanları tarihe göre sıralandı.");
 	}
 
 	@Override
-	public DataResult<List<JobPostingWithEmployerAndJobTitleDto>> getActiveJobPostingDetailsByEmployerId(
-			int employerId) {
+	public DataResult<List<JobPostingWithEmployerAndJobTitleDto>> getActiveJobPostingDetailsByEmployerId(int id) {
 		
-		return new SuccessDataResult<List<JobPostingWithEmployerAndJobTitleDto>>(this.jobPostingDao.getJobPostingWithEmployerAndJobTitleDetailsByIsActiveAndEmployer_EmployerId(true, employerId), "Bir firmaya ait tüm aktif iş ilanları listelendi.");
+		return new SuccessDataResult<List<JobPostingWithEmployerAndJobTitleDto>>(this.jobPostingDao.getJobPostingWithEmployerAndJobTitleDetailsByIsActiveAndEmployer_EmployerId(id), "Bir firmaya ait tüm aktif iş ilanları listelendi.");
 	}
 
 	

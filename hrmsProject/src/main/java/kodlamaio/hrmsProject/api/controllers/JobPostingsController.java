@@ -51,7 +51,7 @@ public class JobPostingsController {
 	}
 	
 	@GetMapping("/getActiveJobPostingDetailsByEmployerId")
-	public DataResult<List<JobPostingWithEmployerAndJobTitleDto>> getActiveJobPostingDetailsByEmployerId(int employerId){
-		return this.jobPostingService.getActiveJobPostingDetailsByEmployerId(employerId);
+	public DataResult<List<JobPostingWithEmployerAndJobTitleDto>> getActiveJobPostingDetailsByEmployerId(int id){
+		return this.jobPostingService.getActiveJobPostingDetailsByEmployerId(id);
 	}
 }

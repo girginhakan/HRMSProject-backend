@@ -1,6 +1,6 @@
 package kodlamaio.hrmsProject.entities.concretes;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -64,7 +64,7 @@ public class JobPosting {
 	@NotBlank
 	@NotNull(message = "required")
 	@Column(name="is_active")
-	private boolean isActive;
+	private Boolean isActive;
 	
 	
 	
@@ -77,7 +77,7 @@ public class JobPosting {
 	private City city;
 	
 	@ManyToOne
-	@JoinColumn(name="title_id")
+	@JoinColumn(name="job_title_id")
 	private JobTitle jobTitle;
 
 	
